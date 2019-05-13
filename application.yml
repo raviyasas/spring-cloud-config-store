@@ -1,5 +1,5 @@
-server:
-  port: 8191
+# Common properties for all micro services
+
 spring:
   cloud:
     config:
