@@ -6,7 +6,7 @@ management:
     web:
       exposure:
         include: hystrix.stream, info, health
-      base-path: /
+      base-path: /**
 
 eureka:
   instance:
