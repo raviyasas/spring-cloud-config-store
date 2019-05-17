@@ -5,8 +5,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: *
-      base-path: /
+        include: "*"
 
 eureka:
   instance:
