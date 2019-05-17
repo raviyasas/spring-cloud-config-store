@@ -1,2 +1,14 @@
 server:
   port: 8090
+
+hystrix:
+  command:
+    default:
+      circuitBreaker:
+        enabled: false
+      execution:
+        isolation:
+          thread:
+            timeoutInMillisecounds: 210000
+        timeout:
+          enabled: false
