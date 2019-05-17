@@ -1,0 +1,25 @@
+server:
+  port: 8099
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream, info, health
+      base-path: /
+
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 5
+    leaseExpirationDurationInSeconds: 2
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    healthcheck:
+      enabled: true
+    lease:
+      duration: 5
+
+turbine:
+  appConfig: PROLAUNCHER-SERVICE, WORK-ORDER-SERVICE
+  clusterNameExpression: new String('default')
