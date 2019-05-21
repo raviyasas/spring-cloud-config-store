@@ -12,3 +12,29 @@ hystrix:
             timeoutInMillisecounds: 210000
         timeout:
           enabled: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      base-path: /
+    jmx:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 5
+    leaseExpirationDurationInSeconds: 2
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+    healthcheck:
+      enabled: true
+    lease:
+      duration: 5
