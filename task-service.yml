@@ -1,9 +1,7 @@
 server:
-  port: 8090
+  port: 8092
 
 spring:
-  main:
-    allow-bean-definition-overriding: true
   rabbitmq:
     host: localhost
     port: 5672
@@ -12,8 +10,7 @@ spring:
 
 jsa:
   rabbitmq:
-    exchange: jsa.direct
-    routing-key: jsa.routingkey
+    queue: jsa.queue
 
 management:
   endpoints:

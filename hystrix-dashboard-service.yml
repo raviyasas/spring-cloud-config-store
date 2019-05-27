@@ -1,41 +1,17 @@
 server:
   port: 8099
 
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-
 eureka:
   instance:
-    leaseRenewalIntervalInSeconds: 5
-    leaseExpirationDurationInSeconds: 2
+    nonSecurePort: ${server.port:8989}
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka
-    healthcheck:
-      enabled: true
-    lease:
-      duration: 5
+      defaultZone: http://${eureka.host:localhost}:${eureka.port:8761}/eureka/
 
 turbine:
-  appConfig: PROLAUNCHER-SERVICE, WORK-ORDER-SERVICE
-  clusterNameExpression: new String('default')
-
-server.port=8099
-spring.application.name=turbine
-management.endpoint.health.enabled=true
-management.endpoints.jmx.exposure.include=*
-management.endpoints.web.exposure.include=*
-management.endpoints.web.base-path=/actuator
-management.endpoints.web.cors.allowed-origins=true
-management.endpoint.health.show-details=always
-eureka.client.serviceUrl.defaultZone=${EUREKA_URI:http://localhost:8761/eureka}
-eureka.instance.lease-expiration-duration-in-seconds=5
-eureka.instance.lease-renewal-interval-in-seconds=5
-turbine.aggregator.cluster-config=default
-turbine.app-config=google
-turbine.cluster-name-expression= new String("default")
-turbine.combine-host-port=true
-turbine.instanceUrlSuffix.default: actuator/hystrix.stream
+  appConfig: prolauncher-service, work-order-service
+  combine-host-port: true
+  cluster-name-expression: new String("default")
+  endpoints:
+    clusters:
+      enabled: true
